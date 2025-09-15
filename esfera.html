@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esfera - Guía Three.js</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f3f3f3;
+      color: #333;
+    }
+
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #fff;
+      background: #ff7f50;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    header a:hover {
+      background: #fff;
+      color: #222;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    pre {
+      background: #111;
+      color: #0f0;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    video {
+      display: block;
+      margin: 1.5rem auto;
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Esfera en Three.js</h1>
+    <a href="index.html">⬅ Volver al menú</a>
+  </header>
+
+  <main>
+    <h2>Ejemplo de código</h2>
+
+    <pre><code>// Crear geometría de la esfera
+var geometry = new THREE.SphereGeometry(4, 32, 32);
+
+// Crear material básico
+var material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: false });
+
+// Crear la esfera y añadirla a la escena
+var esfera = new THREE.Mesh(geometry, material);
+scene.add(esfera);
+    </code></pre>
+
+    <h2>Video demostrativo</h2>
+    <!-- Aquí insertas tu video -->
+    <video controls>
+      <source src="videos/esfera.mp4" type="video/mp4">
+      Tu navegador no soporta la reproducción de video.
+    </video>
+
+    <h2>Descripción</h2>
+    <p>
+      Para crear una esfera en Three.js usamos <b>SphereGeometry</b>:
+      <code>SphereGeometry(radio, segmentosAncho, segmentosAlto)</code>.
+    </p>
+    <ul>
+      <li><b>Radio:</b> 4</li>
+      <li><b>Segmentos de ancho:</b> 32 (define qué tan suave se ve alrededor)</li>
+      <li><b>Segmentos de alto:</b> 32 (define qué tan suave se ve de arriba a abajo)</li>
+    </ul>
+    <p>
+      Cuantos más segmentos uses, más redonda se verá la esfera.
+    </p>
+  </main>
+</body>
+</html>
