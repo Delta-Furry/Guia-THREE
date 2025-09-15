@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuadrado - Guía Three.js</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f3f3f3;
+      color: #333;
+    }
+
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #fff;
+      background: #ff7f50;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    header a:hover {
+      background: #fff;
+      color: #222;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    pre {
+      background: #222;
+      color: #0f0;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    video {
+      display: block;
+      margin: 1.5rem auto;
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .descripcion {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: #f9f9f9;
+      border-left: 5px solid #ff7f50;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cuadrado en Three.js</h1>
+    <a href="index.html">⬅ Volver al menú</a>
+  </header>
+
+  <main>
+    <h2>Ejemplo básico de un Cuadrado</h2>
+
+    <p>En Three.js no existe un objeto llamado <strong>Cuadrado</strong> como tal, pero podemos representarlo con un <strong>plano (PlaneGeometry)</strong> con medidas iguales de ancho y alto.</p>
+
+    <pre><code>
+// Crear escena, cámara y renderizador
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Geometría del cuadrado (ancho, alto)
+const geometry = new THREE.PlaneGeometry(5, 5); // cuadrado de 5x5
+
+// Material básico
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, side: THREE.DoubleSide });
+
+// Crear malla
+const square = new THREE.Mesh(geometry, material);
+scene.add(square);
+
+// Cámara y animación
+camera.position.z = 10;
+
+function animate() {
+  requestAnimationFrame(animate);
+  square.rotation.y += 0.01; // giro en Y
+  square.rotation.x += 0.01; // giro en X
+  renderer.render(scene, camera);
+}
+animate();
+    </code></pre>
+
+    <h2>Video demostrativo</h2>
+    <!-- Aquí insertas tu video -->
+    <video controls>
+      <source src="videos/cuadrado.mp4" type="video/mp4">
+      Tu navegador no soporta la reproducción de video.
+    </video>
+
+    <div class="descripcion">
+      <h3>Descripción</h3>
+      <p>
+        En <strong>PlaneGeometry(ancho, alto)</strong>, los primeros dos parámetros son:
+      </p>
+      <ul>
+        <li><b>Ancho:</b> define la medida horizontal.</li>
+        <li><b>Alto:</b> define la medida vertical.</li>
+      </ul>
+      <p>
+        En este ejemplo usamos un cuadrado de <code>5x5</code>.  
+        Si quisieras un rectángulo, podrías poner diferentes valores, por ejemplo <code>PlaneGeometry(8, 4)</code>.
+      </p>
+    </div>
+  </main>
+</body>
+</html>
