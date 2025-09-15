@@ -41,7 +41,7 @@
     }
 
     main {
-      max-width: 900px;
+      max-width: 800px;
       margin: 2rem auto;
       padding: 1.5rem;
       background: white;
@@ -55,7 +55,7 @@
     }
 
     pre {
-      background: #222;
+      background: #111;
       color: #0f0;
       padding: 1rem;
       border-radius: 8px;
@@ -69,14 +69,6 @@
       border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
-
-    .descripcion {
-      margin-top: 1.5rem;
-      padding: 1rem;
-      background: #f9f9f9;
-      border-left: 5px solid #ff7f50;
-      border-radius: 6px;
-    }
   </style>
 </head>
 <body>
@@ -86,38 +78,17 @@
   </header>
 
   <main>
-    <h2>Ejemplo básico de un Cuadrado</h2>
+    <h2>Ejemplo de código</h2>
 
-    <p>En Three.js no existe un objeto llamado <strong>Cuadrado</strong> como tal, pero podemos representarlo con un <strong>plano (PlaneGeometry)</strong> con medidas iguales de ancho y alto.</p>
+    <pre><code>// Crear geometría del cuadrado
+var geometry = new THREE.PlaneGeometry(5, 5);
 
-    <pre><code>
-// Crear escena, cámara y renderizador
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+// Crear material básico
+var material = new THREE.MeshBasicMaterial({ color: 0x00ff00, side: THREE.DoubleSide });
 
-// Geometría del cuadrado (ancho, alto)
-const geometry = new THREE.PlaneGeometry(5, 5); // cuadrado de 5x5
-
-// Material básico
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, side: THREE.DoubleSide });
-
-// Crear malla
-const square = new THREE.Mesh(geometry, material);
-scene.add(square);
-
-// Cámara y animación
-camera.position.z = 10;
-
-function animate() {
-  requestAnimationFrame(animate);
-  square.rotation.y += 0.01; // giro en Y
-  square.rotation.x += 0.01; // giro en X
-  renderer.render(scene, camera);
-}
-animate();
+// Crear el cuadrado y añadirlo a la escena
+var cuadrado = new THREE.Mesh(geometry, material);
+scene.add(cuadrado);
     </code></pre>
 
     <h2>Video demostrativo</h2>
@@ -127,20 +98,16 @@ animate();
       Tu navegador no soporta la reproducción de video.
     </video>
 
-    <div class="descripcion">
-      <h3>Descripción</h3>
-      <p>
-        En <strong>PlaneGeometry(ancho, alto)</strong>, los primeros dos parámetros son:
-      </p>
-      <ul>
-        <li><b>Ancho:</b> define la medida horizontal.</li>
-        <li><b>Alto:</b> define la medida vertical.</li>
-      </ul>
-      <p>
-        En este ejemplo usamos un cuadrado de <code>5x5</code>.  
-        Si quisieras un rectángulo, podrías poner diferentes valores, por ejemplo <code>PlaneGeometry(8, 4)</code>.
-      </p>
-    </div>
+    <h2>Descripción</h2>
+    <p>
+      Para crear un cuadrado en Three.js usamos <b>PlaneGeometry(ancho, alto)</b>.
+      <br>En este caso es <code>(5, 5)</code>, lo que significa:
+    </p>
+    <ul>
+      <li><b>Ancho:</b> 5</li>
+      <li><b>Alto:</b> 5</li>
+    </ul>
+    <p>Así obtenemos un cuadrado de 5x5 unidades en el espacio 3D.</p>
   </main>
 </body>
 </html>
