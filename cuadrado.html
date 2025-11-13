@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cubo - Guía Three.js</title>
+  <title>Cuadrado - Guía Three.js</title>
   <style>
-    /* (Aquí va todo tu CSS, es el mismo, así que no lo repito) */
+    /* (Aquí va todo tu CSS idéntico) */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -57,7 +57,7 @@
 
     pre {
       background: #111;
-      color: #0f0; /* Un verde neon para el código */
+      color: #0f0; /* Verde neon */
       padding: 1rem;
       border-radius: 8px;
       overflow-x: auto;
@@ -81,42 +81,42 @@
 </head>
 <body>
   <header>
-    <h1>Cubo en Three.js</h1>
+    <h1>Cuadrado (Plano) en Three.js</h1>
     <a href="index.html">⬅ Volver al menú</a>
   </header>
 
   <main>
     <h2>Ejemplo de código</h2>
 
-    <pre><code>// Crear geometría del cubo
-var geometry = new THREE.BoxGeometry(4, 4, 4);
+    <pre><code>// Crear geometría del plano (cuadrado)
+var geometry = new THREE.PlaneGeometry(5, 5);
 
-// Crear material básico (cambié el color a azul)
-var material = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: false });
+// Crear material básico (Verde)
+// ¡Importante! Añadimos "DoubleSide" para que se vea por delante y por detrás
+var material = new THREE.MeshBasicMaterial({ color: 0x00ff00, side: THREE.DoubleSide });
 
-// Crear el cubo y añadirlo a la escena
-var cubo = new THREE.Mesh(geometry, material);
-scene.add(cubo);
+// Crear el plano y añadirlo a la escena
+var plano = new THREE.Mesh(geometry, material);
+scene.add(plano);
     </code></pre>
 
     <h2>Video demostrativo</h2>
     <video controls>
-      <source src="videos/cubo.mp4" type="video/mp4">
+      <source src="videos/cuadrado.mp4" type="video/mp4">
       Tu navegador no soporta la reproducción de video.
     </video>
 
     <h2>Descripción</h2>
     <p>
-      Para crear un cubo (o caja) en Three.js usamos <b>BoxGeometry</b>:
-      <code>BoxGeometry(ancho, alto, profundidad)</code>.
+      Para crear un cuadrado o un plano en Three.js usamos <b>PlaneGeometry</b>:
+      <code>PlaneGeometry(ancho, alto)</code>.
     </p>
     <ul>
-      <li><b>Ancho:</b> 4 (Tamaño en el eje X)</li>
-      <li><b>Alto:</b> 4 (Tamaño en el eje Y)</li>
-      <li><b>Profundidad:</b> 4 (Tamaño en el eje Z)</li>
+      <li><b>Ancho:</b> 5 (Tamaño en el eje X)</li>
+      <li><b>Alto:</b> 5 (Tamaño en el eje Y)</li>
     </ul>
     <p>
-      Estos tres valores definen el tamaño del cubo. A diferencia de la esfera, no necesita segmentos para verse bien, ¡porque ya es cuadrado!
+      <b>Nota importante:</b> Por defecto, los planos en Three.js solo son visibles desde un lado (el frontal). Si quieres que se vea por ambos lados (frontal y trasero), debes especificarlo en el material con la propiedad <code>side: THREE.DoubleSide</code>.
     </p>
   </main>
 </body>
