@@ -85,6 +85,7 @@
 var geometry = new THREE.BoxGeometry(5, 5, 5); 
 
 // Crear material básico
+// Ya no es necesario THREE.DoubleSide para un objeto 3D
 var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); 
 
 // Crear el cubo y añadirlo a la escena
@@ -104,8 +105,8 @@ scene.add(cubo);
       <br>En este caso es <code>(5, 5, 5)</code>, lo que significa:
     </p>
     <ul>
-      <li>**Ancho:** 5</li>
-      <li>**Alto:** 5</li>
+      <li>**Ancho (eje X):** 5</li>
+      <li>**Alto (eje Y):** 5</li>
       <li>**Profundidad (eje Z):** 5</li>
     </ul>
     <p>Así obtenemos un cubo perfecto de 5x5x5 unidades en el espacio 3D.</p>
