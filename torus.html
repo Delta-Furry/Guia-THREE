@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pirámide - Guía Three.js</title>
+  <title>Toroide - Guía Three.js</title>
   <style>
-    /* Tu CSS estándar */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -81,43 +80,42 @@
 </head>
 <body>
   <header>
-    <h1>Pirámide en Three.js</h1>
+    <h1>Toroide (Dona) en Three.js</h1>
     <a href="index.html">⬅ Volver al menú</a>
   </header>
 
   <main>
     <h2>Ejemplo de código</h2>
 
-    <pre><code>// ¡Truco! Usamos ConeGeometry con solo 4 lados
-// ConeGeometry(radio, altura, segmentosRadiales)
-var geometry = new THREE.ConeGeometry(4, 5, 4);
+    <pre><code>// Crear geometría del Toroide (Dona)
+// TorusGeometry(radio, tubo, segmentosRadiales, segmentosTubulares)
+var geometry = new THREE.TorusGeometry(3, 1, 16, 48);
 
-// Crear material básico (Color Naranja)
-var material = new THREE.MeshBasicMaterial({ color: 0xff7700, wireframe: false });
+// Crear material básico (Color Turquesa)
+var material = new THREE.MeshBasicMaterial({ color: 0x00aabb, wireframe: false });
 
-// Crear la pirámide y añadirla a la escena
-var piramide = new THREE.Mesh(geometry, material);
-scene.add(piramide);
+// Crear el toroide y añadirlo a la escena
+var toroide = new THREE.Mesh(geometry, material);
+scene.add(toroide);
     </code></pre>
 
     <h2>Video demostrativo</h2>
     <video controls>
-      <source src="videos/piramide.mp4" type="video/mp4">
+      <source src="videos/toroide.mp4" type="video/mp4">
       Tu navegador no soporta la reproducción de video.
     </video>
 
     <h2>Descripción</h2>
     <p>
-      Three.js no tiene una geometría llamada "Pyramid". Para crear una, usamos <b>ConeGeometry</b> y definimos que solo tenga <b>4 segmentos radiales</b>.
+      Para crear una dona o toroide usamos <b>TorusGeometry</b>:
+      <code>TorusGeometry(radio, tubo, segRadiales, segTubulares)</code>.
     </p>
     <ul>
-      <li><b>Radio:</b> 4 (Tamaño de la base).</li>
-      <li><b>Altura:</b> 5 (Altura de la punta).</li>
-      <li><b>Segmentos Radiales:</b> 4 (Esto crea la base cuadrada).</li>
+      <li><b>Radio:</b> 3 (El tamaño general del anillo).</li>
+      <li><b>Tubo:</b> 1 (El grosor de la dona).</li>
+      <li><b>Segmentos Radiales:</b> 16 (Qué tan redondo es el tubo).</li>
+      <li><b>Segmentos Tubulares:</b> 48 (Qué tan redondo es el anillo).</li>
     </ul>
-    <p>
-      Si cambias el 4 por un 3, ¡obtendrías un tetraedro!
-    </p>
   </main>
 </body>
 </html>
