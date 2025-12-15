@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pirámide - Guía Three.js</title>
+  <title>Tetraedro - Guía Three.js</title>
   <style>
-    /* Tu CSS estándar */
+    /* Estilos idénticos a las otras páginas */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -81,43 +81,40 @@
 </head>
 <body>
   <header>
-    <h1>Pirámide en Three.js</h1>
+    <h1>Tetraedro en Three.js</h1>
     <a href="index.html">⬅ Volver al menú</a>
   </header>
 
   <main>
     <h2>Ejemplo de código</h2>
 
-    <pre><code>// ¡Truco! Usamos ConeGeometry con solo 4 lados
-// ConeGeometry(radio, altura, segmentosRadiales)
-var geometry = new THREE.ConeGeometry(4, 5, 4);
+    <pre><code>// Crear geometría del Tetraedro (Pirámide triangular)
+// TetrahedronGeometry(radio, detalle)
+var geometry = new THREE.TetrahedronGeometry(4, 0);
 
-// Crear material básico (Color Naranja)
-var material = new THREE.MeshBasicMaterial({ color: 0xff7700, wireframe: false });
+// Crear material básico (Color Magenta)
+var material = new THREE.MeshBasicMaterial({ color: 0xff0066, wireframe: false });
 
-// Crear la pirámide y añadirla a la escena
-var piramide = new THREE.Mesh(geometry, material);
-scene.add(piramide);
+// Crear el tetraedro y añadirlo a la escena
+var tetraedro = new THREE.Mesh(geometry, material);
+scene.add(tetraedro);
     </code></pre>
 
     <h2>Video demostrativo</h2>
     <video controls>
-      <source src="videos/piramide.mp4" type="video/mp4">
+      <source src="videos/tetraedro.mp4" type="video/mp4">
       Tu navegador no soporta la reproducción de video.
     </video>
 
     <h2>Descripción</h2>
     <p>
-      Three.js no tiene una geometría llamada "Pyramid". Para crear una, usamos <b>ConeGeometry</b> y definimos que solo tenga <b>4 segmentos radiales</b>.
+      El <b>Tetraedro</b> es la figura 3D más simple, compuesta por 4 caras triangulares. Usamos:
+      <code>TetrahedronGeometry(radio, detalle)</code>.
     </p>
     <ul>
-      <li><b>Radio:</b> 4 (Tamaño de la base).</li>
-      <li><b>Altura:</b> 5 (Altura de la punta).</li>
-      <li><b>Segmentos Radiales:</b> 4 (Esto crea la base cuadrada).</li>
+      <li><b>Radio:</b> 4 (El tamaño desde el centro a los vértices).</li>
+      <li><b>Detalle:</b> 0 (El valor 0 crea la forma básica de 4 caras. Si aumentas este número, se subdivide y se vuelve más esférico).</li>
     </ul>
-    <p>
-      Si cambias el 4 por un 3, ¡obtendrías un tetraedro!
-    </p>
   </main>
 </body>
 </html>
