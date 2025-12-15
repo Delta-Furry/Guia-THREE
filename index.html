@@ -3,119 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guía de Three.js - Figuras y Materiales</title>
+  <title>Guía de Three.js - Menú</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: #f3f3f3;
-      color: #333;
+      background-color: #ff7f50; /* El color naranja de tu imagen */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
-      background: #222;
-      color: #fff;
+      background-color: #222;
+      color: white;
       text-align: center;
-      padding: 1.5rem;
+      padding: 2rem 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
 
     header p {
       margin: 0.5rem 0 0;
-      font-size: 1rem;
+      font-size: 1.2rem;
+      color: #ccc;
     }
 
-    nav {
-      background: #ff7f50;
-      padding: 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
+    .authors {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #fff;
     }
 
-    nav a {
-      text-decoration: none;
-      background: white;
-      color: #222;
-      padding: 0.8rem 1.2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      background: #222;
-      color: white;
+    .authors span {
+      color: #00bfff; /* Un color azulito para resaltar los nombres */
     }
 
     main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center; /* Centrar verticalmente */
+      padding: 2rem;
     }
 
-    footer {
-      background: #222;
-      color: white;
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    /* Estilo de los botones */
+    .menu-btn {
+      background: white;
+      color: #333;
+      text-decoration: none;
+      padding: 1.5rem 1rem;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 1.1rem;
       text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .menu-btn:hover {
+      transform: translateY(-5px); /* Se levanta al pasar el mouse */
+      box-shadow: 0 8px 12px rgba(0,0,0,0.3);
+      background: #f9f9f9;
+      color: #ff7f50; /* Texto naranja al hacer hover */
+    }
+
+    /* Ajuste para los botones anchos de materiales */
+    .material-btn {
+      grid-column: span 1; 
+    }
+    
+    @media (min-width: 600px) {
+        .material-btn {
+            grid-column: span 2; /* Que ocupen más espacio en pantallas grandes */
+        }
+    }
+    
+    footer {
+        text-align: center;
+        padding: 1rem;
+        color: white;
+        font-size: 0.8rem;
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Guía de Three.js</h1>
     <p>Figuras Geométricas y Materiales Básicos</p>
-    <p>Creado por: <strong>[Nombre 1]</strong> y <strong>[Nombre 2]</strong></p>
+    <div class="authors">
+      Creado por: <br>
+      <span>Cinthia Johana Tafoya Monroy</span> <br> y <br> <span>Luis Alberto Valdez Espinoza</span>
+    </div>
   </header>
 
-  <nav>
-    <!-- Figuras geométricas -->
-    <a href="cuadrado.html">Cuadrado</a>
-    <a href="cubo.html">Cubo</a>
-    <a href="esfera.html">Esfera</a>
-    <a href="cono.html">Cono</a>
-    <a href="cilindro.html">Cilindro</a>
-    <a href="torus.html">Toroide</a>
-    <a href="piramide.html">Pirámide</a>
-    <a href="icosaedro.html">Icosaedro</a>
-    <a href="tetraedro.html">Tetraedro</a>
-
-    <!-- Materiales -->
-    <a href="basic.html">MeshBasicMaterial</a>
-    <a href="phong.html">MeshPhongMaterial</a>
-    <a href="standard.html">MeshStandardMaterial</a>
-  </nav>
-
   <main>
-    <h2>Bienvenidos</h2>
-    <p>
-      Esta página es una guía introductoria a <strong>Three.js</strong>, 
-      enfocada en el aprendizaje de las <strong>figuras geométricas básicas</strong> 
-      y los <strong>materiales esenciales</strong> para empezar a crear escenas en 3D.
-    </p>
-    <p>
-      En cada sección encontrarás:
-      <ul>
-        <li>Explicación de la figura o material</li>
-        <li>Código en Three.js</li>
-        <li>Video demostrativo</li>
-      </ul>
-    </p>
-    <p>Haz clic en el menú de arriba para comenzar 🚀</p>
-  </main>
+    <div class="menu-grid">
+      <a href="cuadrado.html" class="menu-btn">Cuadrado</a>
+      <a href="cubo.html" class="menu-btn">Cubo</a>
+      <a href="esfera.html" class="menu-btn">Esfera</a>
+      <a href="cono.html" class="menu-btn">Cono</a>
+      <a href="cilindro.html" class="menu-btn">Cilindro</a>
+      <a href="torus.html" class="menu-btn">Toroide</a>
 
+      <a href="piramide.html" class="menu-btn">Pirámide</a>
+      <a href="icosaedro.html" class="menu-btn">Icosaedro</a>
+      <a href="tetraedro.html" class="menu-btn">Tetraedro</a>
+
+      <a href="basic.html" class="menu-btn material-btn">MeshBasicMaterial</a>
+      <a href="phong.html" class="menu-btn material-btn">MeshPhongMaterial</a>
+      <a href="standard.html" class="menu-btn material-btn">MeshStandardMaterial</a>
+    </div>
+  </main>
+  
   <footer>
-    <p>Guía de Three.js - Proyecto académico</p>
+      Proyecto Universitario 2025
   </footer>
+
 </body>
 </html>
