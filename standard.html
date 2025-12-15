@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MeshStandardMaterial - Guía Three.js</title>
+  <style>
+    /* (El mismo CSS) */
+    body { font-family: Arial, sans-serif; margin: 0; background: #f3f3f3; color: #333; }
+    header { background: #222; color: #fff; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { margin: 0; font-size: 1.5rem; }
+    header a { text-decoration: none; color: #fff; background: #ff7f50; padding: 0.5rem 1rem; border-radius: 6px; transition: 0.3s; }
+    header a:hover { background: #fff; color: #222; }
+    main { max-width: 800px; margin: 2rem auto; padding: 1.5rem; background: white; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+    h2 { text-align: center; margin-bottom: 1rem; }
+    pre { background: #111; color: #0f0; padding: 1rem; border-radius: 8px; overflow-x: auto; }
+    video { display: block; margin: 1.5rem auto; max-width: 100%; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+    code { background: #eee; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MeshStandardMaterial en Three.js</h1>
+    <a href="index.html">⬅ Volver al menú</a>
+  </header>
+
+  <main>
+    <h2>Ejemplo de código</h2>
+
+    <pre><code>// Crear una geometría (por ejemplo, un toroide)
+var geometry = new THREE.TorusKnotGeometry(2, 0.6, 100, 16);
+
+// Crear MeshStandardMaterial
+// Es el material más moderno y realista (PBR). Requiere luces.
+var material = new THREE.MeshStandardMaterial({
+    color: 0xffff00,    // Color base (amarillo)
+    metalness: 0.5,     // Qué tan metálico es (0.0 = no metálico, 1.0 = metal puro)
+    roughness: 0.2      // Qué tan rugoso es (0.0 = liso espejo, 1.0 = mate total)
+});
+
+// Crear el objeto
+var objeto = new THREE.Mesh(geometry, material);
+scene.add(objeto);
+
+// Necesita buena iluminación para verse bien, por ejemplo:
+// var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+// directionalLight.position.set(5, 5, 5);
+// scene.add(directionalLight);
+// scene.add(new THREE.AmbientLight(0x404040));
+    </code></pre>
+
+    <h2>Video demostrativo</h2>
+    <video controls>
+      <source src="videos/material3.mp4" type="video/mp4">
+      Tu navegador no soporta la reproducción de video.
+    </video>
+
+    <h2>Descripción</h2>
+    <p>
+      El <b>MeshStandardMaterial</b> es el material estándar de la industria hoy en día. Utiliza un modelo de <b>Renderizado Basado en Física (PBR)</b> para lograr resultados muy realistas.
+    </p>
+    <ul>
+      <li>Sus dos propiedades principales para controlar su apariencia son <code>metalness</code> (metalicidad) y <code>roughness</code> (rugosidad).</li>
+      <li>Con <code>roughness: 0</code>, la superficie es como un espejo; con <code>roughness: 1</code>, es completamente mate.</li>
+      <li>Es más costoso computacionalmente que el Phong o el Basic, pero ofrece una calidad visual superior y se comporta de manera más predecible bajo diferentes condiciones de luz.</li>
+    </ul>
+  </main>
+</body>
+</html>
